@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import FxCard from '../components/FxCard';
+import { render, screen } from '@testing-library/react'
+import FxCard from '../components/FxCard'
 
 describe("FxCard", () => {
 

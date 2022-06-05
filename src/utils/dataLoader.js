@@ -1,8 +1,13 @@
-import exchangeData from "../assets/fx.json"
 import countryData from "../assets/countries.json"
 
 export function getExchangeRatesData() {
-  return exchangeData.fx
+  return fetch("https://run.mocky.io/v3/c88db14a-3128-4fbd-af74-1371c5bb0343")
+    .then((resp) => resp.json())
+    .then((data) => {
+      return data
+    })
+    .catch(() => { 
+      throw new Error("Error while fetching data.") })
 }
 
 export function getCountryData() {
@@ -18,6 +23,6 @@ function importAll(r) {
   return images;
 }
 
-export function getFlagsData() {  
+export function getFlagsData() {
   return importAll(require.context('../assets/flags', false, /\.(png)$/));
 }
