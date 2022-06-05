@@ -19,6 +19,7 @@ describe("FxCard", () => {
   test("FxCard dont displays exchange rate if not available", () => {
     const dummyCountryData = {
       countryCode: "TE",
+      countryFlag: "testFlagData",
       currency: "Test Currency",
       countryName: "Test Republic",
       exchangeRate: undefined
@@ -32,6 +33,7 @@ describe("FxCard", () => {
   test("FxCard loads existing flag", () => {
     const dummyCountryData = {
       countryCode: "HU",
+      countryFlag: "testFlagData",
       currency: "Test Currency",
       countryName: "Test Republic",
       exchangeRate: 0.5
@@ -40,7 +42,7 @@ describe("FxCard", () => {
     render(<FxCard countryData={dummyCountryData} />);
 
     const flag = screen.getByRole("img");
-    expect(flag).toHaveAttribute("src", "hu.png");
+    expect(flag).toHaveAttribute("src", "testFlagData");
     expect(flag).toHaveAttribute("alt", "HU");
     expect(flag).toBeInTheDocument();
   });
