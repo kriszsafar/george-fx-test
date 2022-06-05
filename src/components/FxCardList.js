@@ -1,5 +1,5 @@
 import FxCard from "./FxCard"
-import { getExchangeRatesData, getCountryData } from "../utils/dataLoader"
+import { getExchangeRatesData, getCountryData, getFlagsData } from "../utils/dataLoader"
 
 export const FxCardList = ({filter}) => {
   const cardData = getCardData()
@@ -18,6 +18,7 @@ export const FxCardList = ({filter}) => {
 function getCardData() {
   const exchangeRates = getExchangeRatesData()
   const countries = getCountryData()
+  const flags = getFlagsData()
 
   let cardData = []
   exchangeRates.map(fx => {
@@ -27,6 +28,7 @@ function getCardData() {
       const countryData = {
         countryName: country.countryName,
         countryCode: country.countryCode,
+        countryFlag: flags[String(country.countryCode).toLowerCase()+".png"],
         currency: fx.currency,
         exchangeRate: fx.exchangeRate ? fx.exchangeRate.middle : undefined
       }
