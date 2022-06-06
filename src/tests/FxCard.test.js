@@ -7,12 +7,13 @@ describe("FxCard", () => {
     const dummyCountryData = {
       countryCode: "TE",
       currency: "Test Currency",
+      baseCurrency: "EUR",
       countryName: "Test Republic",
       exchangeRate: 0.55
     }
 
     render(<FxCard countryData={dummyCountryData} />);
-    const fxRate = screen.getByText((1 / dummyCountryData.exchangeRate).toFixed(4) + " EUR")
+    const fxRate = screen.getByText(`${(1 / dummyCountryData.exchangeRate).toFixed(4)} ${dummyCountryData.baseCurrency}`)
     expect(fxRate).toBeInTheDocument()
   });
 
@@ -21,6 +22,7 @@ describe("FxCard", () => {
       countryCode: "TE",
       countryFlag: "testFlagData",
       currency: "Test Currency",
+      baseCurrency: "EUR",
       countryName: "Test Republic",
       exchangeRate: undefined
     }
@@ -34,6 +36,7 @@ describe("FxCard", () => {
     const dummyCountryData = {
       countryCode: "HU",
       countryFlag: "testFlagData",
+      baseCurrency: "EUR",
       currency: "Test Currency",
       countryName: "Test Republic",
       exchangeRate: 0.5

@@ -70,6 +70,7 @@ function getCardData(excahngeRateData) {
         countryName: country.countryName,
         countryCode: country.countryCode,
         countryFlag: flags[String(country.countryCode).toLowerCase() + ".png"],
+        baseCurrency: excahngeRateData.baseCurrency,
         currency: fx.currency,
         exchangeRate: fx.exchangeRate ? fx.exchangeRate.middle : undefined
       }

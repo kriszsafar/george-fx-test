@@ -5,15 +5,15 @@ export const FxCard = ({ countryData }) => (
     <Flag countryCode={countryData.countryCode} src={countryData.countryFlag} />
     <h3 className="space-around">{countryData.currency}</h3>
     <p>{countryData.countryName}</p>
-    <ExchangeRate exchangeRate={countryData.exchangeRate} />
+    <ExchangeRate exchangeRate={countryData.exchangeRate} baseCurrency={countryData.baseCurrency} />
   </div>
 )
 
-const ExchangeRate = ({ exchangeRate }) => (
+const ExchangeRate = ({ exchangeRate, baseCurrency }) => (
   <h3 className="float-right">
     {
       exchangeRate
-        ? (1 / exchangeRate).toFixed(4) + " EUR"
+        ? `${(1 / exchangeRate).toFixed(4)} ${baseCurrency}`
         : "Exchange rate not available"
     }
   </h3>
